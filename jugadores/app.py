@@ -5,19 +5,20 @@ from joblib import load
 import pymongo
 import os
 import datetime
-
+import time
+from dotenv import load_dotenv
+load_dotenv()
 
 model = load_model("jugadores_bestmodel.keras")
 scaler = load("jugadores_scaler.joblib")
-
 
 def guardar_datos_en_bbdd(muestra_nueva):
     client = pymongo.MongoClient(
         f"mongodb+srv://{os.environ.get('MONGO_USER')}:{os.environ.get('MONGO_PASSWORD')}@cluster0.2fbpmxe.mongodb.net/"  # DEFINE CLUSTER
     )
-    db = client["jugadores"]  # CHANGE DB NAME
+    db = client["tesis"]  # CHANGE DB NAME
     json_insert = {"dateTime": datetime.datetime.now(), "values": muestra_nueva}
-    db.insert_one(json_insert)
+    db["jugadores"].insert_one(json_insert)
 
 
 # API PREDICCIÓN CON RED NEURONAL
@@ -363,46 +364,59 @@ new_experiment = np.array(
     ]
 ).reshape(1, -1)
 
+col1,  col2 = st.columns(2)
 
-# Botón para activar la función y mostrar el resultado
-if st.button("Calcular perfil", type="primary"):
+with col1:
+    # Botón para activar la función y mostrar el resultado
+    if st.button("Calcular perfil", type="primary"):
 
-    # si no se ha contestado todo el formulario
-    if any([v == 0.0 for v in new_experiment]):
-        st.warning(
-            "Debes responder todas las preguntas del formulario antes de poder calcular el perfil"
-        )
-
-    else:
-
-        # Llamada a la API
-        prediccion = predice_clases(new_experiment)
-
-        # Mostrar el resultado y una foto dependiendo del resultado
-        st.write(f"Resultado de la función x: {prediccion}")
-
-        # Mostrar foto según el resultado (ejemplo simple)
-        if prediccion == 0:
-            # st.image("imagen_positiva.jpg", caption="Resultado positivo", use_column_width=True)
-            st.header("Nos enontramos delante del perfil 1")
-            st.write("Generalmente son:")
-            st.write(
-                "Mas chicos, jóvenes y de futbol con alto perfeccionismo, y moderadas competencias deportivas. Moderadas habilidades sociales y satisfacción con la vida"
+        # si no se ha contestado todo el formulario
+        if any([v == 0.0 for v in new_experiment[0]]):
+            st.warning(
+                "Debes responder todas las preguntas del formulario antes de poder calcular el perfil"
             )
-        elif prediccion == 1:
-            st.header("Nos enontramos delante del perfil 2")
-            st.write("Generalmente son:")
-            st.write(
-                "Mas chicas, adultas y jugadoras de baloncesto, con bajos perfeccionismo excepto organización y altas habilidades deportivas. Altas habilidades sociales y satisfacción con la vida"
-            )
-        elif prediccion == 2:
-            st.header("Nos enontramos delante del perfil 3")
-            st.write("Generalmente son:")
-            st.write(
-                "No se asocia a ningún grupo, ni por genero ni grupo y categoría, tienen bajas competencias deportivas, y sobre todo bajas habilidades sociales y satisfacción con la vida. Perfeccionismo moderado bajo. "
-            )
+
+        else:
+
+            # Llamada a la API
+            prediccion = predice_clases(new_experiment)
+
+            # Mostrar el resultado y una foto dependiendo del resultado
+            st.write(f"Resultado de la función x: {prediccion}")
+
+            # Mostrar foto según el resultado (ejemplo simple)
+            if prediccion == 0:
+                # st.image("imagen_positiva.jpg", caption="Resultado positivo", use_column_width=True)
+                st.header("Nos enontramos delante del perfil 1")
+                st.write("Generalmente son:")
+                st.write(
+                    "Mas chicos, jóvenes y de futbol con alto perfeccionismo, y moderadas competencias deportivas. Moderadas habilidades sociales y satisfacción con la vida"
+                )
+            elif prediccion == 1:
+                st.header("Nos enontramos delante del perfil 2")
+                st.write("Generalmente son:")
+                st.write(
+                    "Mas chicas, adultas y jugadoras de baloncesto, con bajos perfeccionismo excepto organización y altas habilidades deportivas. Altas habilidades sociales y satisfacción con la vida"
+                )
+            elif prediccion == 2:
+                st.header("Nos enontramos delante del perfil 3")
+                st.write("Generalmente son:")
+                st.write(
+                    "No se asocia a ningún grupo, ni por genero ni grupo y categoría, tienen bajas competencias deportivas, y sobre todo bajas habilidades sociales y satisfacción con la vida. Perfeccionismo moderado bajo. "
+                )
             # st.image("imagen_negativa.jpg", caption="Resultado negativo", use_column_width=True)
 
-        st.write("Desea guardar el perfil?")
-        if st.button("Guardar perfil", type="primary"):
-            pass
+with col2:
+    #st.write("Desea guardar el perfil?")
+    if st.button("Guardar perfil", type="primary"):
+
+        # si no se ha contestado todo el formulario
+        if any([v == 0.0 for v in new_experiment[0]]):
+            st.warning(
+                "Debes responder todas las preguntas del formulario antes de poder guardar el perfil"
+            )
+
+        else:
+            new_value = [sexo, grupo, categ_deportiva] + [float(v) for v in new_experiment[0]]
+            guardar_datos_en_bbdd(new_value)
+            st.info("Perfil guardado correctamente")

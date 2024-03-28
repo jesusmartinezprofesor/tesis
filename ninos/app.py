@@ -5,6 +5,9 @@ from joblib import load
 import os
 import datetime
 import pymongo
+import time
+from dotenv import load_dotenv
+load_dotenv()
 
 model = load_model("ninos_bestmodel.keras")
 scaler = load("ninos_scaler.joblib")
@@ -14,9 +17,9 @@ def guardar_datos_en_bbdd(muestra_nueva):
     client = pymongo.MongoClient(
         f"mongodb+srv://{os.environ.get('MONGO_USER')}:{os.environ.get('MONGO_PASSWORD')}@cluster0.2fbpmxe.mongodb.net/"  # DEFINE CLUSTER
     )
-    db = client["ninos"]  # CHANGE DB NAME
+    db = client["tesis"]  # CHANGE DB NAME
     json_insert = {"dateTime": datetime.datetime.now(), "values": muestra_nueva}
-    db.insert_one(json_insert)
+    db["ninos"].insert_one(json_insert)
 
 
 # Define la función x (puedes personalizarla según tus necesidades)
@@ -67,10 +70,10 @@ st.write("Doctorando: Prof. Jesús Martínez")
 
 with st.expander("Datos cualitativos"):
     sexo = st.radio("Elige el sexo", ["Niño", "Niña"], index=None, horizontal=True)
-    grupo = st.radio(
+    peso = st.radio(
         "Elige el grupo", ["peso normal", "sobre peso"], index=None, horizontal=True
     )
-    categ_deportiva = st.number_input(
+    edad = st.number_input(
         "Introduce edad", min_value=0, max_value=120, step=1
     )
 
@@ -284,43 +287,59 @@ new_experiment = np.array(
     ]
 ).reshape(1, -1)
 
-# Botón para activar la función y mostrar el resultado
-if st.button("Calcular perfil", type="primary"):
 
-    # si no se ha contestado todo el formulario
-    if any([v == 0.0 for v in new_experiment]):
-        st.warning(
-            "Debes responder todas las preguntas del formulario antes de poder calcular el perfil"
-        )
+col1,  col2 = st.columns(2)
 
-    else:
-        # Aplicar la función x al vector de datos
-        resultado_funcion_x = funcion_x(new_experiment)
+with col1:
+    # Botón para activar la función y mostrar el resultado
+    if st.button("Calcular perfil", type="primary"):
 
-        # Mostrar el resultado y una foto dependiendo del resultado
-        st.write(f"Resultado de la función x: {resultado_funcion_x}")
-
-        # Mostrar  el resultado
-        if resultado_funcion_x == 0:
-            st.header("Nos enontramos delante del perfil 1")
-            st.write("Generalmente son:")
-            st.write(
-                "Puntúan bajo en las tres dimensiones de la competencia motriz percibida, y también bajas en las puntuaciones del perfeccionismo y la afectividad positiva."
+        # si no se ha contestado todo el formulario
+        if any([v == 0.0 for v in new_experiment[0]]):
+            st.warning(
+                "Debes responder todas las preguntas del formulario antes de poder calcular el perfil"
             )
-        elif resultado_funcion_x == 1:
-            st.header("Nos enontramos delante del perfil 2")
-            st.write("Generalmente son:")
-            st.write(
-                "Puntuaciones mayores en las dimensiones de competencia motriz percibida, experiencia personal y profesor, y también alta, pero más moderada en compañero. Fueron los que puntuaron más alto en todas las dimensiones del perfeccionismo y en afectividad negativa, y puntuaron bajo en aspectos positivos de la afectividad."
-            )
-        elif resultado_funcion_x == 2:
-            st.header("Nos enontramos delante del perfil 3")
-            st.write("Generalmente son:")
-            st.write(
-                "Mayores puntuaciones en la dimensión de competencia motriz percibida compañeros, en las otras dos dimensiones, profesor y experiencia personal sus valores eran neutros en torno a la media. Este grupo a su vez se caracterizó por tener las mayores puntuaciones en afectividad positiva y también puntuaciones altas en autoexperiencia, pero bajas en autovaloración y afectividad negativa. "
-            )
-            # st.image("imagen_negativa.jpg", caption="Resultado negativo", use_column_width=True)
 
-        st.write("Desea guardar el perfil?")
-        if st.button("Guardar perfil", type="primary"):
-            pass
+        else:
+            # Aplicar la función x al vector de datos
+            resultado_funcion_x = funcion_x(new_experiment)
+
+            # Mostrar el resultado y una foto dependiendo del resultado
+            st.write(f"Resultado de la función x: {resultado_funcion_x}")
+
+            # Mostrar  el resultado
+            if resultado_funcion_x == 0:
+                st.header("Nos enontramos delante del perfil 1")
+                st.write("Generalmente son:")
+                st.write(
+                    "Puntúan bajo en las tres dimensiones de la competencia motriz percibida, y también bajas en las puntuaciones del perfeccionismo y la afectividad positiva."
+                )
+            elif resultado_funcion_x == 1:
+                st.header("Nos enontramos delante del perfil 2")
+                st.write("Generalmente son:")
+                st.write(
+                    "Puntuaciones mayores en las dimensiones de competencia motriz percibida, experiencia personal y profesor, y también alta, pero más moderada en compañero. Fueron los que puntuaron más alto en todas las dimensiones del perfeccionismo y en afectividad negativa, y puntuaron bajo en aspectos positivos de la afectividad."
+                )
+            elif resultado_funcion_x == 2:
+                st.header("Nos enontramos delante del perfil 3")
+                st.write("Generalmente son:")
+                st.write(
+                    "Mayores puntuaciones en la dimensión de competencia motriz percibida compañeros, en las otras dos dimensiones, profesor y experiencia personal sus valores eran neutros en torno a la media. Este grupo a su vez se caracterizó por tener las mayores puntuaciones en afectividad positiva y también puntuaciones altas en autoexperiencia, pero bajas en autovaloración y afectividad negativa. "
+                )
+                # st.image("imagen_negativa.jpg", caption="Resultado negativo", use_column_width=True)
+
+
+with col2:
+    #st.write("Desea guardar el perfil?")
+    if st.button("Guardar perfil", type="primary"):
+
+        # si no se ha contestado todo el formulario
+        if any([v == 0.0 for v in new_experiment[0]]):
+            st.warning(
+                "Debes responder todas las preguntas del formulario antes de poder guardar el perfil"
+            )
+
+        else:
+            new_value = [sexo, peso, edad] + [float(v) for v in new_experiment[0]]
+            guardar_datos_en_bbdd(new_value)
+            st.info("Perfil guardado correctamente")

@@ -1,0 +1,422 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.31.42.184:8501
+  External URL: http://13.53.70.170:8501
+
+2024-03-06 16:56:59.910750: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-06 16:56:59.969179: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-03-06 16:56:59.969243: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-03-06 16:56:59.970871: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-03-06 16:56:59.979662: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-06 16:56:59.980102: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-03-06 16:57:00.864229: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-03-06 16:57:01.823 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 868, in from_config
+    return cls(**config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/input_layer.py", line 153, in __init__
+    raise ValueError(
+ValueError: Unrecognized keyword arguments: ['batch_shape']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 6, in <module>
+    model = load_model("jugadores_bestmodel.keras")
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_api.py", line 254, in load_model
+    return saving_lib.load_model(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 281, in load_model
+    raise e
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 246, in load_model
+    model = deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/sequential.py", line 466, in from_config
+    layer = layer_module.deserialize(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/layers/serialization.py", line 276, in deserialize
+    return serialization_lib.deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 609, in deserialize_keras_object
+    return deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 870, in from_config
+    raise TypeError(
+TypeError: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 10], 'dtype': 'float32', 'sparse': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2024-03-06 18:27:33.448 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 868, in from_config
+    return cls(**config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/input_layer.py", line 153, in __init__
+    raise ValueError(
+ValueError: Unrecognized keyword arguments: ['batch_shape']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 6, in <module>
+    model = load_model("jugadores_bestmodel.keras")
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_api.py", line 254, in load_model
+    return saving_lib.load_model(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 281, in load_model
+    raise e
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 246, in load_model
+    model = deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/sequential.py", line 466, in from_config
+    layer = layer_module.deserialize(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/layers/serialization.py", line 276, in deserialize
+    return serialization_lib.deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 609, in deserialize_keras_object
+    return deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 870, in from_config
+    raise TypeError(
+TypeError: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 10], 'dtype': 'float32', 'sparse': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2024-03-06 18:28:22.798 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 868, in from_config
+    return cls(**config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/input_layer.py", line 153, in __init__
+    raise ValueError(
+ValueError: Unrecognized keyword arguments: ['batch_shape']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 6, in <module>
+    model = load_model("jugadores_bestmodel.keras")
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_api.py", line 254, in load_model
+    return saving_lib.load_model(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 281, in load_model
+    raise e
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 246, in load_model
+    model = deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/sequential.py", line 466, in from_config
+    layer = layer_module.deserialize(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/layers/serialization.py", line 276, in deserialize
+    return serialization_lib.deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 609, in deserialize_keras_object
+    return deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 870, in from_config
+    raise TypeError(
+TypeError: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 10], 'dtype': 'float32', 'sparse': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+2024-03-06 18:41:02.837 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 868, in from_config
+    return cls(**config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/input_layer.py", line 153, in __init__
+    raise ValueError(
+ValueError: Unrecognized keyword arguments: ['batch_shape']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 6, in <module>
+    model = load_model("jugadores_bestmodel.keras")
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_api.py", line 254, in load_model
+    return saving_lib.load_model(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 281, in load_model
+    raise e
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/saving_lib.py", line 246, in load_model
+    model = deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/sequential.py", line 466, in from_config
+    layer = layer_module.deserialize(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/layers/serialization.py", line 276, in deserialize
+    return serialization_lib.deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 609, in deserialize_keras_object
+    return deserialize_keras_object(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/saving/serialization_lib.py", line 728, in deserialize_keras_object
+    instance = cls.from_config(inner_config)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/keras/src/engine/base_layer.py", line 870, in from_config
+    raise TypeError(
+TypeError: Error when deserializing class 'InputLayer' using config={'batch_shape': [None, 10], 'dtype': 'float32', 'sparse': False, 'name': 'input_layer'}.
+
+Exception encountered: Unrecognized keyword arguments: ['batch_shape']
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 75ms/step
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.31.42.184:8501
+  External URL: http://16.171.134.47:8501
+
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.31.42.184:8501
+  External URL: http://13.53.206.235:8501
+
+2024-03-27 11:11:17.164935: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-27 11:11:18.025559: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-03-27 11:11:18.026332: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-03-27 11:11:18.210523: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-03-27 11:11:18.612885: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-27 11:11:18.618280: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-03-27 11:11:21.564184: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 169ms/step
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 86ms/step
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.31.42.184:8501
+  External URL: http://13.49.67.224:8501
+
+2024-03-28 11:32:48.012526: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-28 11:32:48.851972: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-03-28 11:32:48.852116: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-03-28 11:32:49.036443: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-03-28 11:32:49.382122: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-28 11:32:49.385232: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-03-28 11:32:51.578521: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2024-03-28 11:34:27.920 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 371, in <module>
+    if any([v == 0.0 for v in new_experiment]):
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2024-03-28 11:35:12.979 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 373, in <module>
+    if any([v == 0.0 for v in new_experiment]):
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+2024-03-28 11:35:42.298 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 371, in <module>
+    st.write(dtype(new_experiment))
+NameError: name 'dtype' is not defined
+2024-03-28 11:35:51.636 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 374, in <module>
+    if any([v == 0.0 for v in new_experiment]):
+ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 162ms/step
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 59ms/step
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 63ms/step
+/home/ubuntu/jesus/venv/lib/python3.10/site-packages/sklearn/base.py:493: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
+  warnings.warn(
+1/1 [==============================] - ETA: 0s1/1 [==============================] - 0s 73ms/step
+2024-03-28 11:46:08.193 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 412, in <module>
+    guardar_datos_en_bbdd(new_experiment)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 22, in guardar_datos_en_bbdd
+    db.insert_one(json_insert)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/collection.py", line 3501, in __call__
+    raise TypeError(
+TypeError: 'Collection' object is not callable. If you meant to call the 'insert_one' method on a 'Database' object it is failing because no such method exists.
+2024-03-28 11:46:38.419 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 412, in <module>
+    guardar_datos_en_bbdd(new_experiment)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 22, in guardar_datos_en_bbdd
+    db.insert(json_insert)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/collection.py", line 3501, in __call__
+    raise TypeError(
+TypeError: 'Collection' object is not callable. If you meant to call the 'insert' method on a 'Database' object it is failing because no such method exists.
+2024-03-28 11:47:24.541 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 412, in <module>
+    guardar_datos_en_bbdd(new_experiment)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 22, in guardar_datos_en_bbdd
+    db["jugadores"].insert_one(json_insert)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/collection.py", line 669, in insert_one
+    self._insert_one(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/collection.py", line 609, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1523, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1421, in _retry_with_session
+    return self._retry_internal(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/_csot.py", line 107, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1462, in _retry_internal
+    ).run()
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 2315, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 2416, in _write
+    with self._client._checkout(self._server, self._session) as conn:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1252, in _checkout
+    with server.checkout(handler=err_handler) as conn:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1637, in checkout
+    conn = self._get_conn(handler=handler)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1756, in _get_conn
+    conn = self.connect(handler=handler)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1607, in connect
+    conn.authenticate()
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1078, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/auth.py", line 625, in authenticate
+    auth_func(credentials, conn)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/auth.py", line 530, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/auth.py", line 257, in _authenticate_scram
+    res = conn.command(source, cmd)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/helpers.py", line 322, in inner
+    return func(*args, **kwargs)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 968, in command
+    return command(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/network.py", line 192, in command
+    helpers._check_command_response(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/helpers.py", line 230, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: bad auth : Authentication failed., full error: {'ok': 0, 'errmsg': 'bad auth : Authentication failed.', 'code': 8000, 'codeName': 'AtlasError'}
+2024-03-28 11:47:37.092 Uncaught app exception
+Traceback (most recent call last):
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/streamlit/runtime/scriptrunner/script_runner.py", line 535, in _run_script
+    exec(code, module.__dict__)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 412, in <module>
+    guardar_datos_en_bbdd(new_experiment)
+  File "/home/ubuntu/jesus/jugadores/app.py", line 22, in guardar_datos_en_bbdd
+    db["jugadores"].insert_one(json_insert)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/collection.py", line 669, in insert_one
+    self._insert_one(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/collection.py", line 609, in _insert_one
+    self.__database.client._retryable_write(acknowledged, _insert_command, session)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1523, in _retryable_write
+    return self._retry_with_session(retryable, func, s, bulk)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1421, in _retry_with_session
+    return self._retry_internal(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/_csot.py", line 107, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1462, in _retry_internal
+    ).run()
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 2315, in run
+    return self._read() if self._is_read else self._write()
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 2416, in _write
+    with self._client._checkout(self._server, self._session) as conn:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/mongo_client.py", line 1252, in _checkout
+    with server.checkout(handler=err_handler) as conn:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1637, in checkout
+    conn = self._get_conn(handler=handler)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1756, in _get_conn
+    conn = self.connect(handler=handler)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1607, in connect
+    conn.authenticate()
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 1078, in authenticate
+    auth.authenticate(creds, self, reauthenticate=reauthenticate)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/auth.py", line 625, in authenticate
+    auth_func(credentials, conn)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/auth.py", line 530, in _authenticate_default
+    return _authenticate_scram(credentials, conn, "SCRAM-SHA-1")
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/auth.py", line 257, in _authenticate_scram
+    res = conn.command(source, cmd)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/helpers.py", line 322, in inner
+    return func(*args, **kwargs)
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/pool.py", line 968, in command
+    return command(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/network.py", line 192, in command
+    helpers._check_command_response(
+  File "/home/ubuntu/jesus/venv/lib/python3.10/site-packages/pymongo/helpers.py", line 230, in _check_command_response
+    raise OperationFailure(errmsg, code, response, max_wire_version)
+pymongo.errors.OperationFailure: bad auth : Authentication failed., full error: {'ok': 0, 'errmsg': 'bad auth : Authentication failed.', 'code': 8000, 'codeName': 'AtlasError'}
+dale!
+None
+{'dateTime': datetime.datetime(2024, 3, 28, 11, 46, 8, 193025), 'values': array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])}
+dale!
+None
+{'dateTime': datetime.datetime(2024, 3, 28, 11, 46, 38, 419062), 'values': array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])}
+dale!
+None
+{'dateTime': datetime.datetime(2024, 3, 28, 11, 47, 24, 195821), 'values': array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])}
+dale!
+None
+{'dateTime': datetime.datetime(2024, 3, 28, 11, 47, 36, 772479), 'values': array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])}
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to False.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Network URL: http://172.31.42.184:8501
+  External URL: http://13.49.67.224:8501
+
+2024-03-28 15:54:02.670731: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-28 15:54:02.726813: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2024-03-28 15:54:02.726888: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2024-03-28 15:54:02.728324: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2024-03-28 15:54:02.737433: I external/local_tsl/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2024-03-28 15:54:02.738003: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-03-28 15:54:03.834783: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
