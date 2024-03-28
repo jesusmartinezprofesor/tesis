@@ -2,9 +2,21 @@ import streamlit as st
 import numpy as np
 from keras.models import load_model
 from joblib import load
+import os
+import datetime
+import pymongo
 
 model = load_model("ninos_bestmodel.keras")
 scaler = load("ninos_scaler.joblib")
+
+
+def guardar_datos_en_bbdd(muestra_nueva):
+    client = pymongo.MongoClient(
+        f"mongodb+srv://{os.environ.get('MONGO_USER')}:{os.environ.get('MONGO_PASSWORD')}@cluster0.2fbpmxe.mongodb.net/"  # DEFINE CLUSTER
+    )
+    db = client["ninos"]  # CHANGE DB NAME
+    json_insert = {"dateTime": datetime.datetime.now(), "values": muestra_nueva}
+    db.insert_one(json_insert)
 
 
 # Define la función x (puedes personalizarla según tus necesidades)

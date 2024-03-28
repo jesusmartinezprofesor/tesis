@@ -3,6 +3,8 @@ import numpy as np
 from keras.models import load_model
 from joblib import load
 import pymongo
+import os
+import datetime
 
 
 model = load_model("jugadores_bestmodel.keras")
@@ -11,10 +13,11 @@ scaler = load("jugadores_scaler.joblib")
 
 def guardar_datos_en_bbdd(muestra_nueva):
     client = pymongo.MongoClient(
-        f"mongodb+srv://{os.environ.get('MONGO_USER')}:{os.environ.get('MONGO_PASSWORD')}@.mongodb.net/"  # DEFINE CLUSTER
+        f"mongodb+srv://{os.environ.get('MONGO_USER')}:{os.environ.get('MONGO_PASSWORD')}@cluster0.2fbpmxe.mongodb.net/"  # DEFINE CLUSTER
     )
     db = client["jugadores"]  # CHANGE DB NAME
-    db.insert_one(muestra_nueva)
+    json_insert = {"dateTime": datetime.datetime.now(), "values": muestra_nueva}
+    db.insert_one(json_insert)
 
 
 # API PREDICCIÓN CON RED NEURONAL
